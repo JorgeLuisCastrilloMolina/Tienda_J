@@ -4,12 +4,12 @@
  */
 
 package com.tienda.service.Impl;
-import com.tienda.dao.ProductoDao;
-import com.tienda.domain.Producto;
-import com.tienda.service.ProductoService;
-import java.util.List;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
+import com.tienda.dao.ProductoDao; 
+import com.tienda.domain.Producto; 
+import com.tienda.service.ProductoService; 
+import java.util.List; 
+import org.springframework.beans.factory.annotation.Autowired; 
+import org.springframework.stereotype.Service; 
 import org.springframework.transaction.annotation.Transactional;
 
 /**
@@ -49,7 +49,16 @@ public class ProductoServiceImpl implements ProductoService {
         productoDao.delete(producto);
     }
     
+    // Lista de productos con precio entre ordendados por descripción 
+    //CosultaAmpliada
+    @Override 
+    @Transactional(readOnly=true) 
+      public List<Producto> findByPrecioBetweenOrderByDescripcion(double precioInf, double precioSup) { 
+         return productoDao.findByPrecioBetweenOrderByDescripcion(precioInf, precioSup); 
+} 
 }
+    
+
     
 
 
